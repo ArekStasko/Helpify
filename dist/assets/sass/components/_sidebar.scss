@@ -3,7 +3,7 @@
     background-color: $color-shark;
     width: 40rem;
     height: 100%;
-    padding: 2rem;
+    padding: 3rem;
     text-align: center;
 
     h1{
@@ -15,11 +15,11 @@
         display: block;
         width: 100%;
         border-bottom: 1px solid $color-shark-light;
-        margin-top: 1rem;
+        margin-top: 3rem;
     }
 
     span:first-of-type{
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
 
     &__location{

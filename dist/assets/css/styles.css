@@ -25,7 +25,7 @@ body {
   background-color: #21212a;
   width: 40rem;
   height: 100%;
-  padding: 2rem;
+  padding: 3rem;
   text-align: center; }
   .sidebar h1 {
     font-size: 6rem;
@@ -34,9 +34,9 @@ body {
     display: block;
     width: 100%;
     border-bottom: 1px solid #2B2B2B;
-    margin-top: 1rem; }
+    margin-top: 3rem; }
   .sidebar span:first-of-type {
-    margin-bottom: 2rem; }
+    margin-bottom: 3rem; }
   .sidebar__location {
     width: 100%;
     font-size: 2.5rem; }
