@@ -1,0 +1,19 @@
+.input{
+    background-color: $color-shark-light;
+    width: 100%;
+    height: 4rem;
+    margin: 1rem 0;
+    outline: none;
+    border: 1px solid $color-orange-dark;
+    border-radius: 6px;
+    padding: 1rem;
+    color: $color-pale-white;
+
+    &--text-area{
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        height: 10rem;
+        max-height: 10rem;
+    }
+}

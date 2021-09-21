@@ -9,8 +9,26 @@
     <script src="assets/scripts/Helpify.js" defer></script>
   </head>
   <body>
-    <section>
-     <h1>Start section</h1>
+    <main class="map" >
+    <section class="sidebar">
+      <h1>Helpify</h1>
+      <div class="sidebar__location">
+        <h3>My Location</h3>
+        <div></div>
+        <button class="btn">Get Location</button>
+      </div>
+      <span></span>
+      <div class="sidebar__add-form">
+        <h3>Add help point</h3>
+        <form>
+          <input class="input" type="text" name="title"/>
+          <textarea class="input input--text-area" name="description" id="point-description"></textarea>
+          <input class="input" type="number" name="phone-number">
+          <button class="btn">Add</button>
+        </form>
+      </div>
+      <span></span>
     </section>
+    </main>
   </body>
 </html>

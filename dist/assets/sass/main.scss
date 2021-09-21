@@ -10,7 +10,14 @@
 @import './base/utilities';
 
 //pages imports
+@import './pages/map';
 
 //components imports
+@import './components/sidebar';
+@import './components/button';
+@import './components/input';
 
 //layout imports
+
+//font 
+@import 'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap';

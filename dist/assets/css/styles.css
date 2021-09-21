@@ -1,3 +1,4 @@
+@import 'https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap';
 *,
 *::after,
 *::before {
@@ -9,4 +10,96 @@ html {
   font-size: 62.5%; }
 
 body {
-  box-sizing: border-box; }
+  background-color: #2B2B2B;
+  box-sizing: border-box;
+  color: #cb8347;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6rem; }
+
+.map {
+  width: 100%;
+  height: 100vh; }
+
+.sidebar {
+  position: fixed;
+  background-color: #21212a;
+  width: 40rem;
+  height: 100%;
+  padding: 2rem;
+  text-align: center; }
+  .sidebar h1 {
+    font-size: 6rem;
+    margin-bottom: 5rem; }
+  .sidebar span {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #2B2B2B;
+    margin-top: 1rem; }
+  .sidebar span:first-of-type {
+    margin-bottom: 2rem; }
+  .sidebar__location {
+    width: 100%;
+    font-size: 2.5rem; }
+    .sidebar__location div {
+      width: 100%;
+      height: 5rem;
+      background-color: #2B2B2B;
+      border-radius: 6px;
+      margin: 3rem 0; }
+  .sidebar__add-form {
+    width: 100%; }
+    .sidebar__add-form h3 {
+      font-size: 25px; }
+
+.btn {
+  position: relative;
+  display: inline-block;
+  width: 20rem;
+  height: 4rem;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #212129;
+  color: #212129;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .3s ease;
+  text-transform: uppercase; }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+  .btn::after {
+    content: "";
+    background-color: #fff;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .3s; }
+
+.input {
+  background-color: #2B2B2B;
+  width: 100%;
+  height: 4rem;
+  margin: 1rem 0;
+  outline: none;
+  border: 1px solid #cb8347;
+  border-radius: 6px;
+  padding: 1rem;
+  color: #FBFBFD; }
+  .input--text-area {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 10rem;
+    max-height: 10rem; }

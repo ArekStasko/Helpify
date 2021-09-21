@@ -1,0 +1,45 @@
+.sidebar{
+    position: fixed;
+    background-color: $color-shark;
+    width: 40rem;
+    height: 100%;
+    padding: 2rem;
+    text-align: center;
+
+    h1{
+        font-size: 6rem;
+        margin-bottom: 5rem;
+    }
+
+    span{
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid $color-shark-light;
+        margin-top: 1rem;
+    }
+
+    span:first-of-type{
+        margin-bottom: 2rem;
+    }
+
+    &__location{
+        width: 100%;
+        font-size: 2.5rem;
+
+        div{
+            width: 100%;
+            height: 5rem;
+            background-color: $color-shark-light;
+            border-radius: 6px;
+            margin: 3rem 0;
+        }
+    }
+
+    &__add-form{
+        width: 100%;
+
+        h3{
+            font-size: 25px;
+        }
+    }
+}
