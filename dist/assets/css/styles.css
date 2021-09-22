@@ -14,42 +14,96 @@ body {
   box-sizing: border-box;
   color: #cb8347;
   font-family: 'Lato', sans-serif;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  overflow-x: hidden; }
+
+#map {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; }
+
+@keyframes arrowRotation {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(180deg); } }
 
 .map {
   width: 100%;
   height: 100vh; }
 
 .sidebar {
-  position: fixed;
-  background-color: #21212a;
+  position: relative;
+  z-index: 2;
   width: 40rem;
-  height: 100%;
+  background-color: #21212a;
+  height: 100vh;
+  max-height: 100vh;
   padding: 3rem;
-  text-align: center; }
+  text-align: center;
+  border-right: 1px solid #fea04f;
+  transition: all 1s ease; }
+  .sidebar--non-active {
+    transform: translateX(-99%); }
   .sidebar h1 {
     font-size: 6rem;
     margin-bottom: 5rem; }
-  .sidebar span {
+  .sidebar__line {
     display: block;
     width: 100%;
-    border-bottom: 1px solid #2B2B2B;
-    margin-top: 3rem; }
-  .sidebar span:first-of-type {
-    margin-bottom: 3rem; }
+    border-bottom: 1px solid #2B2B2B; }
+    .sidebar__line:first-of-type {
+      margin: 3rem 0; }
+  .sidebar__btn {
+    display: inline-block;
+    position: absolute;
+    border: 1px solid #fea04f;
+    border-radius: 2rem;
+    width: 7rem;
+    height: 7rem;
+    font-size: 3rem;
+    background-color: #21212a;
+    top: 1rem;
+    right: -10rem;
+    text-align: center;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    color: #cb8347; }
+    .sidebar__btn i {
+      transition: all .4s ease;
+      transform: rotate(0); }
+    .sidebar__btn--active i {
+      transform: rotate(180deg);
+      animation: arrowRotation;
+      animation-fill-mode: backwards; }
   .sidebar__location {
     width: 100%;
+    height: 30%;
     font-size: 2.5rem; }
     .sidebar__location div {
       width: 100%;
       height: 5rem;
       background-color: #2B2B2B;
       border-radius: 6px;
-      margin: 3rem 0; }
-  .sidebar__add-form {
-    width: 100%; }
-    .sidebar__add-form h3 {
+      margin-top: 3rem; }
+  .sidebar__find-form {
+    width: 100%;
+    height: 30%;
+    inset-block-end: 10%; }
+    .sidebar__find-form h3 {
       font-size: 25px; }
+
+@media (max-width: 540px) {
+  .sidebar {
+    width: 100%;
+    padding-top: 6rem; }
+    .sidebar__btn {
+      transition: all 1s ease; }
+      .sidebar__btn--active {
+        transform: translateX(-12rem); } }
 
 .btn {
   position: relative;
@@ -64,7 +118,8 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: all .3s ease;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin-top: 2rem; }
   .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }

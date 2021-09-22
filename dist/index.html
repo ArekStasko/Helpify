@@ -6,29 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Helpify</title>
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <script src="assets/scripts/Helpify.js" defer></script>
+    <script src="assets/scripts/Index.js" defer></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <script src="https://kit.fontawesome.com/b4038b14b5.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <main class="map" >
-    <section class="sidebar">
+    <section class="sidebar sidebar--non-active" id="sidebar">
+      <button class="sidebar__btn sidebar__btn--non-active" id="sidebar-button">
+        <i class="fas fa-arrow-right"></i>
+      </button>
       <h1>Helpify</h1>
       <div class="sidebar__location">
         <h3>My Location</h3>
         <div></div>
-        <button class="btn">Get Location</button>
+        <button class="btn">Copy Location</button>
       </div>
-      <span></span>
-      <div class="sidebar__add-form">
-        <h3>Add help point</h3>
+      <span class="sidebar__line"></span>
+      <div class="sidebar__find-form">
+        <h3>Find a place</h3>
         <form>
-          <input class="input" type="text" name="title"/>
-          <textarea class="input input--text-area" name="description" id="point-description"></textarea>
-          <input class="input" type="number" name="phone-number">
-          <button class="btn">Add</button>
+          <input class="input" type="text"/>
+          <button class="btn">Find</button>
         </form>
       </div>
-      <span></span>
+      <span class="sidebar__line"></span>
     </section>
+    <div id="map"></div>
     </main>
   </body>
 </html>

@@ -4,7 +4,7 @@ const CleanPlugin = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-    'Helpify': './src/helpify.js',
+    'Index': './src/index.js',
     'Location': './src/location.js'
     },
     output: {
