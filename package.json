@@ -9,7 +9,8 @@
     "build": "webpack",
     "build:prod": "webpack --config webpack.config.prod.js",
     "compile:sass": "node-sass dist/assets/sass/main.scss dist/assets/css/styles.css  -w",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "serve": "webpack serve"
   },
   "author": "Arek Stasko",
   "license": "ISC",
@@ -17,14 +18,15 @@
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
+    "@webpack-cli/serve": "^1.5.2",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "core-js": "^3.2.1",
     "cypress": "^8.4.1",
     "regenerator-runtime": "^0.13.3",
     "webpack": "^4.40.2",
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.1"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
     "node-sass": "^6.0.1"

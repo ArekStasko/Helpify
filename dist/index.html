@@ -9,6 +9,10 @@
     <script src="assets/scripts/Index.js" defer></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
     <script src="https://kit.fontawesome.com/b4038b14b5.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -20,7 +24,7 @@
       <h1>Helpify</h1>
       <div class="sidebar__location">
         <h3>My Location</h3>
-        <div></div>
+        <div id="my-location"></div>
         <button class="btn">Copy Location</button>
       </div>
       <span class="sidebar__line"></span>
@@ -32,6 +36,8 @@
         </form>
       </div>
       <span class="sidebar__line"></span>
+      <div id="geocoder"></div>
+      <pre id="result"></pre>
     </section>
     <div id="map"></div>
     </main>

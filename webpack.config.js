@@ -5,7 +5,6 @@ module.exports = {
     mode: 'development',
     entry: {
     'Index': './src/index.js',
-    'Location': './src/location.js'
     },
     output: {
       filename: '[name].js',
@@ -14,7 +13,8 @@ module.exports = {
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-      contentBase: './dist'
+      contentBase: './dist',
+      port: 3000,
     },
     module: {
       rules: [
