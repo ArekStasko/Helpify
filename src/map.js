@@ -1,5 +1,9 @@
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiamlyYWl5aWEiLCJhIjoiY2t0dWNqMXNwMGlheTMzcW4ydGlxNDZ5MCJ9.8cncuQ0VUaoqscH5gz5CFA";
+const token = process.env.MAPBOX_TOKEN
+mapboxgl.accessToken = token
+
+
+//I WILL REFACTOR THIS CODE TO BE READABLE AND EFFECTIVE
+//NOW I ONLY TRY TO MAKE FUNCTIONALITY
 
 export class Map {
   constructor(lat, lng) {
@@ -67,4 +71,5 @@ export class Map {
       geolocate.trigger();
     });
   }
+  
 }

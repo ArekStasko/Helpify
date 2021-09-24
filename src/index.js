@@ -1,10 +1,19 @@
 import { Map } from './map'
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding')
+const token = process.env.MAPBOX_TOKEN
+const geocoder = mbxGeocoding({ accessToken: token })
+
+
+//I WILL REFACTOR THIS CODE TO BE READABLE AND EFFECTIVE
+//NOW I ONLY TRY TO MAKE FUNCTIONALITY
 
 class Place {
   constructor(){
     const sidebarButton = document.getElementById('sidebar-button')
+    const findForm = document.getElementById('find-form')
 
     sidebarButton.addEventListener('click', this.sidebarToggle)
+    findForm.addEventListener('click', this.findPlace)
     window.addEventListener('load', this.locateUser.bind(this))
   }
 
@@ -29,7 +38,7 @@ class Place {
         }
       const myLocation = document.getElementById('my-location')  
       myLocation.textContent = `${coords.lat} ${coords.lng}`
-      await new Map(coords.lng, coords.lat)
+      new Map(coords.lng, coords.lat)
       },
       error => {
         alert(
@@ -38,6 +47,19 @@ class Place {
       }
     )
   }
+
+  async findPlace(e){
+    const place = document.getElementById('find-place').value
+    const geoData = await geocoder.forwardGeocode({
+      query: place,
+      limit: 1
+    }).send()
+    const coords = await geoData.body.features[0].geometry.coordinates
+    const [lat, lng] = [coords[0], coords[1]]
+    console.log(lat, lng)
+    e.preventDefault()
+  }
+
 }
 
 new Place()
