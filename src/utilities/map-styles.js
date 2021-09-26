@@ -16,8 +16,9 @@ export const mapLayer = (map, geolocate) => {
         };
         const myLocation = document.getElementById("my-location");
         myLocation.textContent = `${coords.lat} ${coords.lng}`;
-
-        map.jumpTo({ center: [coords.lng, coords.lat] });
+        map.jumpTo({
+          center: [coords.lng, coords.lat],
+        });
       },
       (error) => {
         alert("Could not locate you unfortunately.");
@@ -36,7 +37,7 @@ export const mapLayer = (map, geolocate) => {
         "source-layer": "building",
         filter: ["==", "extrude", "true"],
         type: "fill-extrusion",
-        minzoom: 15,
+        minzoom: 24,
         paint: {
           "fill-extrusion-color": "#aaa",
           "fill-extrusion-height": [
