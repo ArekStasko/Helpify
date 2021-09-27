@@ -7,12 +7,14 @@ class Place {
   constructor() {
     const sidebarButton = document.getElementById("sidebar-button");
     const findForm = document.getElementById("find-form");
+    const routeForm = document.getElementById('route-form')
 
     sidebarButton.addEventListener("click", this.sidebarToggle);
     findForm.addEventListener("click", this.findPlace.bind(this));
+    routeForm.addEventListener('click', this.showRoute.bind(this))
     window.addEventListener("load", this.location.bind(this));
 
-    this.map = new MapControl();
+    this.mapControl = new MapControl();
   }
 
   sidebarToggle() {
@@ -22,7 +24,7 @@ class Place {
   }
 
   location() {
-    this.map.locateUser();
+    this.mapControl.locateUser();
   }
 
   async findPlace(e) {
@@ -35,8 +37,12 @@ class Place {
       .send();
     const coords = await geoData.body.features[0].geometry.coordinates;
     const [lat, lng] = [coords[0], coords[1]];
-    this.map.findPlace(lat, lng);
+    this.mapControl.findPlace(lat, lng);
     e.preventDefault();
+  }
+
+  showRoute() {
+    this.mapControl.showRoute()
   }
 }
 

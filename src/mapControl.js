@@ -1,9 +1,11 @@
-import { mapLayer } from "./utilities/map-styles";
-import { Map } from "./utilities/map";
-
 //env token
 const token = process.env.MAPBOX_TOKEN;
 mapboxgl.accessToken = token;
+
+const mbxDirections = require("@mapbox/mapbox-sdk/services/directions");
+const directions = mbxDirections({ accessToken: token });
+import { mapLayer } from "./utilities/map-styles";
+import { Map } from "./utilities/map";
 
 export class MapControl {
   constructor() {
@@ -11,6 +13,10 @@ export class MapControl {
     this.markers;
     this.locateUser = this.locateUser;
     this.findPlace = this.findPlace;
+  }
+
+  copyLocation() {
+    //http://www.google.com/maps/place/lat,lng
   }
 
   locateUser() {
@@ -35,10 +41,38 @@ export class MapControl {
     });
 
     // delete actual marker if there is
-    if (this.markers!==undefined) this.markers.remove();
+    if (this.markers !== undefined) this.markers.remove();
 
     this.markers = new mapboxgl.Marker({ color: "#cb8347", draggable: true })
       .setLngLat([lat, lng])
       .addTo(this.map);
+  }
+
+  showRoute() {
+    console.log(this.markers._lngLat.lng, this.markers._lngLat.lat);
+
+    directions
+      .getDirections({
+        profile: "driving-traffic",
+        waypoints: [
+          {
+            coordinates: [49.659904, 21.1943424],
+          },
+          {
+            coordinates: [this.markers._lngLat.lng, this.markers._lngLat.lat],
+          },
+        ],
+      })
+      .send()
+      .then(res => {
+        const directionRoute = res.body;
+        // I have to find wayo to generate correct GeoJSON object,
+        // for now this line of code is not working and generate type of data error
+       // this.map.getSource('route').setData(directionRoute)
+        console.log(directionRoute);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 }

@@ -30,6 +30,29 @@ export const mapLayer = (map, geolocate) => {
       (layer) => layer.type === "symbol" && layer.layout["text-field"]
     ).id;
 
+    map.addSource('route', {
+      //possible bugs with type of data (geojson etc)
+      type: 'geojson',
+      data: null,
+    })
+
+    map.addLayer(
+      {
+        id: 'routeline-active',
+        type: 'line',
+        source: 'route',
+        layout: {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        paint: {
+          'line-color': '#3887be',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 12, 3, 22, 12]
+        }
+      },
+      'waterway-label'
+    );
+
     map.addLayer(
       {
         id: "add-3d-buildings",
