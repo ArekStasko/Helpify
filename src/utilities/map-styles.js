@@ -1,4 +1,5 @@
 //this is styles from mapbox
+import * as turf from '@turf/turf'
 
 export const mapLayer = (map, geolocate) => {
   return map.on("load", () => {
@@ -30,28 +31,13 @@ export const mapLayer = (map, geolocate) => {
       (layer) => layer.type === "symbol" && layer.layout["text-field"]
     ).id;
 
+    const routeSrc = turf.featureCollection([])
+
     map.addSource('route', {
       //possible bugs with type of data (geojson etc)
       type: 'geojson',
-      data: null,
+      data: routeSrc,
     })
-
-    map.addLayer(
-      {
-        id: 'routeline-active',
-        type: 'line',
-        source: 'route',
-        layout: {
-          'line-join': 'round',
-          'line-cap': 'round'
-        },
-        paint: {
-          'line-color': '#3887be',
-          'line-width': ['interpolate', ['linear'], ['zoom'], 12, 3, 22, 12]
-        }
-      },
-      'waterway-label'
-    );
 
     map.addLayer(
       {
@@ -85,6 +71,23 @@ export const mapLayer = (map, geolocate) => {
         },
       },
       labelLayerId
+    );
+
+    map.addLayer(
+      {
+        id: 'routeline-active',
+        type: 'line',
+        source: 'route',
+        layout: {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        paint: {
+          'line-color': '#3887be',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 12, 3, 22, 12]
+        }
+      },
+      'waterway-label'
     );
     //locate the user after load the styles
     geolocate.trigger();
