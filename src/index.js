@@ -1,7 +1,8 @@
 import { MapControl } from "./mapControl";
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const token = process.env.MAPBOX_TOKEN;
-const geocoder = mbxGeocoding({ accessToken: token });
+const geocoder = mbxGeocoding({ accessToken: token })
+import { ModalUi } from './utilities/UI-modules';
 
 class Place {
   constructor() {
@@ -15,6 +16,7 @@ class Place {
     window.addEventListener("load", this.location.bind(this));
 
     this.mapControl = new MapControl();
+    this.modal = new ModalUi();
   }
 
   sidebarToggle() {
@@ -28,6 +30,7 @@ class Place {
   }
 
   async findPlace(e) {
+    try{
     const place = document.getElementById("find-place").value;
     const geoData = await geocoder
       .forwardGeocode({
@@ -39,6 +42,12 @@ class Place {
     const [lat, lng] = [coords[0], coords[1]];
     this.mapControl.findPlace(lat, lng);
     e.preventDefault();
+    } catch(e){
+      this.modal.localizationFailed(
+        'We can\'t find place',
+        'We are sorry but our system did not find a place you provided, please make sure you have entered the correct data'
+      )
+    }
   }
 
   showRoute() {

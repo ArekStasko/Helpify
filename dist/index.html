@@ -17,6 +17,13 @@
   </head>
   <body>
     <main class="map" >
+    <section id="popup" class="popup">
+      <div id="popup-body" class="popup__body">
+        <h2 id='popup-title'></h2>
+        <p id='popup-message'></p>
+        <button id='popup-btn' class="btn btn__popup" >Ok</button>
+      </div>
+    </section>
     <section class="sidebar sidebar--non-active" id="sidebar">
       <button class="sidebar__btn sidebar__btn--non-active" id="sidebar-button">
         <i class="fas fa-arrow-right"></i>
@@ -25,7 +32,7 @@
       <div class="sidebar__location">
         <h3>My Location</h3>
         <div id="my-location"></div>
-        <button class="btn">Copy Location</button>
+        <button id='copy-location' class="btn">Copy Location</button>
       </div>
       <span class="sidebar__line"></span>
       <div class="sidebar__find-form">
@@ -38,7 +45,9 @@
       <div id="geocoder"></div>
       <pre id="result"></pre>
     </section>
-    <div id="map"></div>
+    <section>
+      <div id="map"></div>
+    </section>
     </main>
   </body>
 </html>

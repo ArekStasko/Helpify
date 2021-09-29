@@ -42,4 +42,9 @@
       z-index: -1;
       transition: all .3s;
     }
+
+    &__popup{
+      float: right;
+      margin: 1rem 0;
+    }
 }

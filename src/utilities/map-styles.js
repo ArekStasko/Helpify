@@ -1,12 +1,17 @@
 //this is styles from mapbox
 import * as turf from '@turf/turf'
+import { ModalUi } from './UI-modules';
 
 export const mapLayer = (map, geolocate) => {
+
+  const modalUi = new ModalUi()
+
   return map.on("load", () => {
     if (!navigator.geolocation) {
-      alert(
-        "Location feature is not available in your browser - please use a more modern browser or manually enter an address."
-      );
+      modalUi.localizationFailed(
+        'Your browser does not support localization', 
+        'Location feature is not available in your browser - please use a more modern browser or manually enter an address.'
+        )
       return;
     }
     navigator.geolocation.getCurrentPosition(
@@ -22,7 +27,10 @@ export const mapLayer = (map, geolocate) => {
         });
       },
       (error) => {
-        alert("Could not locate you unfortunately.");
+        modalUi.localizationFailed(
+          'We can\'t locate you', 
+          'Unfortunately, without agreeing to locate you, you cannot use the yourPlace application, please accept localization and refresh the page'
+          )
       }
     );
 
