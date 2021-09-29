@@ -34,7 +34,6 @@ export const mapLayer = (map, geolocate) => {
     const routeSrc = turf.featureCollection([])
 
     map.addSource('route', {
-      //possible bugs with type of data (geojson etc)
       type: 'geojson',
       data: routeSrc,
     })

@@ -48,9 +48,9 @@ export class MapControl {
       .setLngLat([lat, lng])
       .addTo(this.map);
   }
-
   showRoute() {
     console.log(this.markers._lngLat.lng, this.markers._lngLat.lat);
+    const userCoords = document.getElementById('my-location').textContent.split(' ')
 
     directions
       .getDirections({
@@ -58,7 +58,7 @@ export class MapControl {
         geometries: "geojson",
         waypoints: [
           {
-            coordinates: [21.1943424, 49.659904],
+            coordinates: [parseFloat(userCoords[1]), parseFloat(userCoords[0])],
           },
           {
             coordinates: [this.markers._lngLat.lng, this.markers._lngLat.lat],
@@ -68,13 +68,9 @@ export class MapControl {
       .send()
       .then(res => {
         const directionRoute = res.body;
-        // I have to find wayo to generate correct GeoJSON object,
-        // for now this line of code is not working and generate type of data error
-       // this.map.getSource('route').setData(directionRoute)
-       const routeGeoJSON = turf.featureCollection([
+        const routeGeoJSON = turf.featureCollection([
         turf.feature(directionRoute.routes[0].geometry) 
        ])
-        console.log(routeGeoJSON);
         this.map.getSource('route').setData(routeGeoJSON)
       })
       .catch((e) => {
