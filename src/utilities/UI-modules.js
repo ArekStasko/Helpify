@@ -4,6 +4,19 @@ export class ModalUi {
         popupBtn.addEventListener('click', this.popupClose)
 
         this.localizationFailed = this.localizationFailed
+        this.loading = this.loading
+    }
+
+    loading(id, state){
+        const element = document.getElementById(id)
+        if(state){
+            element.classList.remove('btn')
+            element.classList.add('loading')
+        } 
+        else {
+            element.classList.remove('loading')
+            element.classList.add('btn')
+        }
     }
 
     localizationFailed(title, msg) {

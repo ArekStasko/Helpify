@@ -25,9 +25,11 @@ export class MapControl {
   }
 
   copyLocation() {
-    //http://www.google.com/maps/place/lat,lng
-
-    console.log(this.modal);
+    const [lat, lng] = document
+      .getElementById("my-location")
+      .textContent.split(" ");
+    const locationLink = `http://www.google.com/maps/place/${lat},${lng}`;
+    navigator.clipboard.writeText(locationLink);
   }
 
   locateUser() {
@@ -44,7 +46,9 @@ export class MapControl {
     this.map.addControl(geolocate);
   }
 
-  findPlace(lat, lng) {
+  findPlace(targetId, lat, lng) {
+    //clear routes
+    this.map.getSource("route").setData(turf.featureCollection([]));
     // set user view to marker with find place
     this.map.flyTo({
       center: [lat, lng],
@@ -57,17 +61,29 @@ export class MapControl {
     this.markers = new mapboxgl.Marker({ color: "#cb8347", draggable: true })
       .setLngLat([lat, lng])
       .addTo(this.map);
+    this.modal.loading(targetId, false);
   }
 
-  showRoute() {
+  showRoute(targetId) {
+    if (!this.markers) {
+      this.modal.localizationFailed(
+        "No point to find",
+        "Please first find some point to which we can find a route"
+      );
+      return;
+    }
+    this.modal.loading(targetId, true);
     const userCoords = document
       .getElementById("my-location")
       .textContent.split(" ");
 
+    const timeInfo = document.getElementById("travel-time");
+    const distanceInfo = document.getElementById("travel-distance");
+
     directions
       .getDirections({
         profile: "driving-traffic",
-        // geometries: "geojson",
+        geometries: "geojson",
         waypoints: [
           {
             coordinates: [parseFloat(userCoords[1]), parseFloat(userCoords[0])],
@@ -80,13 +96,22 @@ export class MapControl {
       .send()
       .then((res) => {
         const directionRoute = res.body;
+        const travelTime = (directionRoute.routes[0].duration / 60 / 60)
+          .toFixed(2)
+          .replace(".", "h ");
+        timeInfo.textContent = `Travel time: ${travelTime}min`;
+        const travelDistance = Math.round(
+          directionRoute.routes[0].distance / 1000
+        );
+        distanceInfo.textContent = `Distance: ${travelDistance}km`;
         const routeGeoJSON = turf.featureCollection([
           turf.feature(directionRoute.routes[0].geometry),
         ]);
         this.map.getSource("route").setData(routeGeoJSON);
+        this.modal.loading(targetId, false);
       })
       .catch((e) => {
-        console.log("AAA BŁĄD:", e);
+        this.modal.loading(targetId, false);
         this.modal.localizationFailed(
           "We can't find the route",
           "We are sorry but our system did not find a route for the selected location, please make sure you have entered the correct data"

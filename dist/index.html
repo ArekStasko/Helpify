@@ -7,47 +7,64 @@
     <title>Helpify</title>
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script src="assets/scripts/Index.js" defer></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
-    <script src="https://kit.fontawesome.com/b4038b14b5.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
+      type="text/css"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
+      type="text/css"
+    />
+    <script
+      src="https://kit.fontawesome.com/b4038b14b5.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <main class="map" >
-    <section id="popup" class="popup">
-      <div id="popup-body" class="popup__body">
-        <h2 id='popup-title'></h2>
-        <p id='popup-message'></p>
-        <button id='popup-btn' class="btn btn__popup" >Ok</button>
-      </div>
-    </section>
-    <section class="sidebar sidebar--non-active" id="sidebar">
-      <button class="sidebar__btn sidebar__btn--non-active" id="sidebar-button">
-        <i class="fas fa-arrow-right"></i>
-      </button>
-      <h1>Helpify</h1>
-      <div class="sidebar__location">
-        <h3>My Location</h3>
-        <div id="my-location"></div>
-        <button id='copy-location' class="btn">Copy Location</button>
-      </div>
-      <span class="sidebar__line"></span>
-      <div class="sidebar__find-form">
-        <h3>Find a place</h3>
-          <input class="input" id="find-place" type="text"/>
-          <button id='find-form' class="btn">Find</button>
-          <button id='route-form' class="btn">Show route</button>
-      </div>
-      <span class="sidebar__line"></span>
-      <div id="geocoder"></div>
-      <pre id="result"></pre>
-    </section>
-    <section>
-      <div id="map"></div>
-    </section>
+    <main class="map">
+      <section id="popup" class="popup">
+        <div id="popup-body" class="popup__body">
+          <h2 id="popup-title"></h2>
+          <p id="popup-message"></p>
+          <button id="popup-btn" class="btn btn__popup">Ok</button>
+        </div>
+      </section>
+      <section class="sidebar sidebar--non-active" id="sidebar">
+        <button
+          class="sidebar__btn sidebar__btn--non-active"
+          id="sidebar-button"
+        >
+          <i class="fas fa-arrow-right"></i>
+        </button>
+        <h1>Helpify</h1>
+        <div class="sidebar__location">
+          <h3>My Location</h3>
+          <div id="my-location"></div>
+          <button id="copy-location" class="btn">Copy Location Link</button>
+        </div>
+        <span class="sidebar__line"></span>
+        <div class="sidebar__find-form">
+          <h3>Find a place</h3>
+          <input class="input" id="find-place" type="text" />
+          <button id="find-form" class="btn">Find</button>
+          <button id="route-form" class="btn">Show route</button>
+          <p id="travel-time"></p>
+          <p id="travel-distance"></p>
+        </div>
+        <span class="sidebar__line"></span>
+      </section>
+      <section>
+        <div id="map"></div>
+      </section>
     </main>
   </body>
 </html>
