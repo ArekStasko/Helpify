@@ -13,21 +13,23 @@ const directions = mbxDirections({ accessToken: token });
 
 export class MapControl {
   constructor() {
-    const copyLocation = document.getElementById("copy-location");
-
+    const copyLocationBtn = document.getElementById("copy-location");
+    this.copyLocationBtn = copyLocationBtn
     this.map = Map();
     this.modal = new ModalUi();
     this.markers;
     this.locateUser = this.locateUser;
     this.findPlace = this.findPlace;
 
-    copyLocation.addEventListener("click", this.copyLocation.bind(this));
+    copyLocationBtn.addEventListener("click", this.copyLocation.bind(this));
   }
 
   copyLocation() {
     const [lat, lng] = document
       .getElementById("my-location")
       .textContent.split(" ");
+    this.copyLocationBtn.classList.add('btn__info')
+    setTimeout(()=>this.copyLocationBtn.classList.remove('btn__info'), 3000)
     const locationLink = `http://www.google.com/maps/place/${lat},${lng}`;
     navigator.clipboard.writeText(locationLink);
   }

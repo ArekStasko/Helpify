@@ -29,6 +29,7 @@
       box-shadow: 0 5px 10px rgba($color_black, 0.2);
     }
 
+
     &::after {
       content: "";
       background-color: $color-white;
@@ -46,6 +47,21 @@
     &__popup{
       float: right;
       margin: 1rem 0;
+    }
+
+    &__info{
+      &::before{
+        content: 'Copied to clipboard';
+        position: absolute;
+        top: 5rem;
+        left: 4rem;
+        padding: .5rem;
+        width: 12rem;
+        height: 4rem;
+        background-color: rgba($color-white, .9) ;
+        border: 1px solid $color-shark-dark;
+        border-radius: 6px;
+      }
     }
 }
 
