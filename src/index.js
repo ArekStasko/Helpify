@@ -9,6 +9,7 @@ class Place {
     const sidebarButton = document.getElementById("sidebar-button");
     const findForm = document.getElementById("find-form");
     const routeForm = document.getElementById("route-form");
+    this.sidebarToggle = this.sidebarToggle
 
     sidebarButton.addEventListener("click", this.sidebarToggle);
     findForm.addEventListener("click", this.findPlace.bind(this));
@@ -20,9 +21,10 @@ class Place {
   }
 
   sidebarToggle() {
+    const sidebarButton = document.getElementById("sidebar-button");
     const sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle("sidebar--non-active");
-    this.classList.toggle("sidebar__btn--active");
+    sidebarButton.classList.toggle("sidebar__btn--active");
   }
 
   location() {
@@ -49,6 +51,7 @@ class Place {
         .send();
       const coords = await geoData.body.features[0].geometry.coordinates;
       const [lat, lng] = [coords[0], coords[1]];
+      this.sidebarToggle()
       this.mapControl.findPlace(targetID, lat, lng);
       e.preventDefault();
     } catch (e) {
@@ -61,6 +64,7 @@ class Place {
   }
 
   showRoute(e) {
+    this.sidebarToggle()
     this.mapControl.showRoute(e.target.id);
   }
 }

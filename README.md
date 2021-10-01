@@ -1,14 +1,25 @@
-# Hello in my - Helpify - project !
+# Hello in my - yourPlace - project !
 
-## What this project will be ?
+## What is this project ?
 
-I want to make a application that will allow people to help others,
+I made a application that allow you to locate yourself on the map and find places,
 
-## Features that i want to use in my app 
-- map where users will be able to add points
-- stats for users like 'help counter'
+## Features that i using in my app 
+- map by mapbox 
+- posibility to locate yourself
+- posibility to find some place and route to it
+- live track your location
 
-## Tools that i will using 
-- webpack with babel
+## Tools / Tech that i am using 
+- webpack
 - scss 
-- axios
+- js
+- mapbox
+
+## What i think about this app ?
+
+I think that this app have huge potential that i can 
+provide in the future, i would like to add posibility to create
+the account and store data like places, routes, user statistics and much more in
+the user account, i would like to develop this app in vanilla js, but i think i
+also will make a better version of this map with react or angular.

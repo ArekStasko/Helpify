@@ -8,7 +8,7 @@
   padding: 3rem;
   text-align: center;
   border-right: 1px solid $color-orange-light;
-  transition: all 1s ease;
+  transition: transform .5s ease;
 
   &--non-active {
     transform: translateX(-99%);
@@ -16,14 +16,18 @@
 
   h1 {
     font-size: 6rem;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
   }
 
   &__line {
     display: block;
     width: 100%;
     border-bottom: 1px solid $color-shark-light;
-    margin: 3rem 0;
+    margin: 2rem 0;
+
+    &:last-of-type{
+      margin-top: 6rem;
+    }
   }
 
   &__btn {
@@ -31,19 +35,20 @@
     position: absolute;
     border: 1px solid $color-orange-light;
     border-radius: 2rem;
-    width: 7rem;
-    height: 7rem;
-    font-size: 3rem;
+    width: 6rem;
+    height: 6rem;
+    font-size: 2.5rem;
     background-color: $color-shark;
     top: 1rem;
     right: -10rem;
     text-align: center;
-    padding: 1.5rem 0;
+    padding: 1.1rem 0;
     cursor: pointer;
     color: $color-orange-dark;
+    transform: translateX(0);
     
     i{
-        transition: all .4s ease;
+        transition: all .5s ease;
         transform: rotate(0);
     }
 
@@ -66,7 +71,7 @@
       height: 5rem;
       background-color: $color-shark-light;
       border-radius: 6px;
-      margin-top: 3rem;
+      margin-top: 2rem;
       padding: 1.4rem 0;
       font-size: 1.5rem;
     }
@@ -77,8 +82,9 @@
     height: 30%;
     inset-block-end: 10%;
 
-    h3 {
+    label {
       font-size: 2.5rem;
+      font-weight: 600;
     }
 
     p{
@@ -95,6 +101,7 @@
 
     &__btn {
       transition: all 1s ease;
+
       &--active {
         transform: translateX(-12rem);
       }
