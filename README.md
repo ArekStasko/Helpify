@@ -23,3 +23,8 @@ provide in the future, i would like to add posibility to create
 the account and store data like places, routes, user statistics and much more in
 the user account, i would like to develop this app in vanilla js, but i think i
 also will make a better version of this map with react or angular.
+
+
+### You can see it live just here :
+
+https://urplace.netlify.app/
